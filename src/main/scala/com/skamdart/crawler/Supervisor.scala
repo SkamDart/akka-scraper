@@ -1,11 +1,12 @@
 package com.skamdart.crawler
 
-import akka.actor.{Actor, ActorSystem}
+import akka.actor.{Actor, ActorLogging, ActorSystem}
 
-class Supervisor(actorSystem: ActorSystem) extends Actor {
+class Supervisor(actorSystem: ActorSystem) extends Actor with ActorLogging {
 
-  // TODO
   override def receive: Receive = {
-    null
+    case StartCrawler(url) => {
+      actorSystem.log.info("Starting crawler with {}", url)
+    }
   }
 }
